@@ -34,37 +34,51 @@ class AddressController extends GetxController {
   Future<List<AddressModel>> getAllUserAddresses() async {
     try {
       final addresses = await addressRepository.fetchUserAddresses();
-      selectedAddress.value = addresses.firstWhere((element) => element.selectedAddress, orElse: () => AddressModel.empty());
+      // Automatically select the first address or a pre-selected one
+      selectedAddress.value = addresses.firstWhere(
+            (address) => address.selectedAddress,
+        orElse: () => AddressModel.empty(),
+      );
       return addresses;
     } catch (e) {
-      ELoaders.errorSnackBar(title: 'Address not found', message: e.toString());
+      ELoaders.errorSnackBar(
+        title: 'Address not found',
+        message: e.toString(),
+      );
       return [];
     }
   }
 
   Future selectAddress(AddressModel newSelectedAddress) async {
     try {
+      // Display a loading dialog
       Get.defaultDialog(
         title: '',
-        onWillPop: () async {return false;},
         barrierDismissible: false,
-        backgroundColor: Colors.transparent,
-        content: const Expanded(child: SizedBox(width: 150, height: 150, child: EAnimationLoaderWidget(text: '', animation: EImages.loading))),
+        content: const CircularProgressIndicator(),
       );
-      if(selectedAddress.value.id.isNotEmpty) {
+
+      if (selectedAddress.value.id.isNotEmpty) {
+        // Unselect the previously selected address
         await addressRepository.updateSelectedField(selectedAddress.value.id, false);
       }
 
+      // Set the new address as selected
       newSelectedAddress.selectedAddress = true;
       selectedAddress.value = newSelectedAddress;
-      
-      await addressRepository.updateSelectedField(selectedAddress.value.id, true);
+      await addressRepository.updateSelectedField(newSelectedAddress.id, true);
 
+      // Close the dialog
       Get.back();
     } catch (e) {
-      ELoaders.errorSnackBar(title: 'Error in selection', message: e.toString());
+      Get.back();
+      ELoaders.errorSnackBar(
+        title: 'Error in selection',
+        message: e.toString(),
+      );
     }
   }
+
 
   ///--add new addresses
   Future addNewAddresses() async {

@@ -1,6 +1,7 @@
 import 'package:e_com_app/common/widgets/appbar/appbar.dart';
 import 'package:e_com_app/common/widgets/appbar/tabbar.dart';
 import 'package:e_com_app/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:e_com_app/common/widgets/custom_shapes/containers/search_page.dart';
 import 'package:e_com_app/common/widgets/layouts/grid_layout.dart';
 import 'package:e_com_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:e_com_app/common/widgets/shimmers/brands_shimmer.dart';
@@ -34,7 +35,7 @@ class StoreScreen extends StatelessWidget {
         appBar: EAppBar(
           title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: const [
-            ECartCounterIcon(),
+            ECartCounterIcon(counterBgColor : EColors.black, counterTextColor: EColors.white),
           ],
         ),
         body: NestedScrollView(
@@ -54,7 +55,12 @@ class StoreScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     const SizedBox(height: ESizes.spaceBtwItems),
-                    const ESearchContainer(text: 'Search in Store', showBorder: true, showBackground: false, padding: EdgeInsets.zero),
+                    ESearchContainer(text: 'Search in Store', showBorder: true, showBackground: false, padding: EdgeInsets.zero, onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SearchPage()),
+                      );
+                    },),
                     const SizedBox(height: ESizes.spaceBtwSections),
       
                     ESectionHeading(title: 'Feature Brands', onPressed: () => Get.to(() => const AllBrandsScreen())),

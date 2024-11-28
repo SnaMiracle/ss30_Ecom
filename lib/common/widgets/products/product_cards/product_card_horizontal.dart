@@ -9,7 +9,6 @@ import 'package:e_com_app/features/shop/models/product_model.dart';
 import 'package:e_com_app/features/shop/screens/product_details/product_detail.dart';
 import 'package:e_com_app/util/constants/colors.dart';
 import 'package:e_com_app/util/constants/enums.dart';
-import 'package:e_com_app/util/constants/image_strings.dart';
 import 'package:e_com_app/util/constants/sizes.dart';
 import 'package:e_com_app/util/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -54,16 +53,20 @@ class EProductCardHorizontal extends StatelessWidget {
                   ),
 
                   ///--sale tag
-                  if (salePercentage != null)
-                    Positioned(
-                      top: 12,
+                  salePercentage == 0
+                      ? const SizedBox.shrink()
+                      : Positioned(
+                        top: 12,
                         child: ERoundedContainer(
                           radius: ESizes.sm,
                           backgroundColor: EColors.secondary.withOpacity(0.8),
                           padding: const EdgeInsets.symmetric(horizontal: ESizes.sm, vertical: ESizes.xs),
-                          child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black)),
-                        ),
+                          child: Text(
+                            '${salePercentage?.toStringAsFixed(0)}%',
+                            style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black),
+                      ),
                     ),
+                  ),
 
                   ///--favorite icon
                   Positioned(

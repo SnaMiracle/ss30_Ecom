@@ -5,6 +5,7 @@ import 'package:e_com_app/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:e_com_app/common/widgets/texts/section_heading.dart';
 import 'package:e_com_app/features/authentication/screens/login/login.dart';
 import 'package:e_com_app/features/personalization/screens/address/address.dart';
+import 'package:e_com_app/features/personalization/screens/settings/memeber_screen.dart';
 import 'package:e_com_app/features/personalization/screens/settings/upload_data_screen.dart';
 import 'package:e_com_app/features/shop/screens/bank/bank_screen.dart';
 import 'package:e_com_app/features/shop/screens/cart/cart.dart';
@@ -63,6 +64,7 @@ class SettingsScreen extends StatelessWidget {
                   const ESectionHeading(title: 'App Settings', showActionButton: false),
                   const SizedBox(height: ESizes.spaceBtwItems),
                   ESettingsMenuTile(icon: Iconsax.document_upload, title: 'Load Data', subTitle: 'Upload Data to your Cloud Firebase', onTap: () => Get.to(() => const EUploadDataScreen())),
+                  ESettingsMenuTile(icon: Iconsax.profile_2user, title: 'About Us', subTitle: 'Our Team Members', onTap: () => Get.to(() => const MemberScreen())),
                   ESettingsMenuTile(icon: Iconsax.location, title: 'Geolocation', subTitle: 'Set recommendation based pn location', trailing: Switch(value: true, onChanged: (value) {}),
                   ),
                   ESettingsMenuTile(icon: Iconsax.security_user, title: 'Safe Mode', subTitle: 'Search result is safe for all ages', trailing: Switch(value: false, onChanged: (value) {}),

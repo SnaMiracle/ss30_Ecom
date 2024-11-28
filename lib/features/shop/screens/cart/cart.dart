@@ -36,7 +36,7 @@ class CartScreen extends StatelessWidget {
             return const SingleChildScrollView(
               child: Padding(
                     padding: EdgeInsets.all(ESizes.defaultSpace),
-              
+
                     ///--item in cart
                     child: ECartItems(),
                         ),
@@ -56,7 +56,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-

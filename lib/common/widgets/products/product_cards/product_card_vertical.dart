@@ -54,17 +54,18 @@ class EProductCardVertical extends StatelessWidget {
                   ERoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true),
 
                   /// --sale tag
+                  if(salePercentage != null)
                   salePercentage == 0
                       ? const SizedBox.shrink()
                       : Positioned(
-                    top: 12,
-                    child: ERoundedContainer(
-                      radius: ESizes.sm,
-                      backgroundColor: EColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(horizontal: ESizes.sm, vertical: ESizes.xs),
-                      child: Text(
-                        '${salePercentage?.toStringAsFixed(0)}%',
-                        style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black),
+                        top: 12,
+                        child: ERoundedContainer(
+                          radius: ESizes.sm,
+                          backgroundColor: EColors.secondary.withOpacity(0.8),
+                          padding: const EdgeInsets.symmetric(horizontal: ESizes.sm, vertical: ESizes.xs),
+                          child: Text(
+                            '${salePercentage?.toStringAsFixed(0)}%',
+                            style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black),
                       ),
                     ),
                   ),

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_com_app/common/widgets/shimmers/shimmer.dart';
 import 'package:e_com_app/util/constants/colors.dart';
-import 'package:e_com_app/util/constants/image_strings.dart';
 import 'package:e_com_app/util/constants/sizes.dart';
 import 'package:e_com_app/util/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 class ECircularImage extends StatelessWidget {
   const ECircularImage({
     super.key,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.fill,
     required this.image,
     this.isNetworkImage = false,
     this.overlayColor,

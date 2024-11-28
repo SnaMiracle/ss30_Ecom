@@ -29,11 +29,20 @@ class EProductMetaData extends StatelessWidget {
         Row(
           children: [
             ///-- sale tag
-            ERoundedContainer(
-              radius: ESizes.sm,
-              backgroundColor: EColors.secondary.withOpacity(0.8),
-              padding: const EdgeInsets.symmetric(horizontal: ESizes.sm, vertical: ESizes.xs),
-              child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black)),
+            if(salePercentage != null)
+            salePercentage == 0
+                ? const SizedBox.shrink()
+                : Positioned(
+                  top: 12,
+                  child: ERoundedContainer(
+                    radius: ESizes.sm,
+                    backgroundColor: EColors.secondary.withOpacity(0.8),
+                    padding: const EdgeInsets.symmetric(horizontal: ESizes.sm, vertical: ESizes.xs),
+                    child: Text(
+                      '${salePercentage?.toStringAsFixed(0)}%',
+                      style: Theme.of(context).textTheme.labelLarge!.apply(color: EColors.black),
+                ),
+              ),
             ),
             const SizedBox(width: ESizes.spaceBtwItems),
 

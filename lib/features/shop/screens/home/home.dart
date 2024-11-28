@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_com_app/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:e_com_app/common/widgets/custom_shapes/containers/search_page.dart';
 import 'package:e_com_app/common/widgets/layouts/grid_layout.dart';
 import 'package:e_com_app/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:e_com_app/common/widgets/shimmers/vertical_product_shimmer.dart';
@@ -27,19 +28,25 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             ///--header
-            const EPrimaryHeaderContainer(
+            EPrimaryHeaderContainer(
               child: Column(
                 children: [
                   ///---appbar
-                  EHomeAppBar(),
-                  SizedBox(height: ESizes.spaceBtwSections),
+                  const EHomeAppBar(),
+                  const SizedBox(height: ESizes.spaceBtwSections),
 
                   ///--searchbar
-                  ESearchContainer(text: 'Search in Store'),
-                  SizedBox(height: ESizes.spaceBtwSections),
+                  ESearchContainer(text: 'Search in Store', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SearchPage()),
+                    );
+                  },
+                  ),
+                  const SizedBox(height: ESizes.spaceBtwSections),
 
                   ///--categories
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: ESizes.defaultSpace),
                     child: Column(
                       children: [
@@ -51,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: ESizes.spaceBtwSections),
+                  const SizedBox(height: ESizes.spaceBtwSections),
                 ],
               ),
             ),

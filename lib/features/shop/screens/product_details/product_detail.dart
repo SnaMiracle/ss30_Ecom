@@ -43,9 +43,6 @@ class ProductDetailScreen extends StatelessWidget {
                   if(product.productType == ProductType.variable.toString()) EProductAttributes(product: product),
                   if(product.productType == ProductType.variable.toString()) const SizedBox(height: ESizes.spaceBtwSections),
 
-                  ///-- checkout
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text('Checkout'))),
-                  const SizedBox(height: ESizes.spaceBtwSections),
                   ///--description
                   const ESectionHeading(title: 'Description', showActionButton: false),
                   const SizedBox(height: ESizes.spaceBtwItems),
@@ -70,6 +67,10 @@ class ProductDetailScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: ESizes.spaceBtwSections),
+
+                  ///-- checkout
+                  // SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text('Checkout'))),
+                  // const SizedBox(height: ESizes.spaceBtwSections),
                 ],
               ),
             ),

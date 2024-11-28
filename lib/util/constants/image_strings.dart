@@ -69,4 +69,13 @@ class EImages {
 
   static const String successPayment = "assets/images/noanimation/Successfully Done.gif";
 
+  static const String heng = "assets/images/members/photo_2024-11-28 11.05.33.jpeg";
+  static const String visuth = "assets/images/members/photo_2024-11-28 11.05.50.jpeg";
+  static const String srim = "assets/images/members/photo_2024-11-28 11.06.04.jpeg";
+  static const String mony = "assets/images/members/photo_2024-11-28 11.06.20.jpeg";
+  static const String panha = "assets/images/members/456442880_1141849510244742_1026857251260772218_n.jpg";
+  static const String ravy = "assets/images/members/IMG_4307.JPG";
+  static const String chanra = "assets/images/members/photo_2024-11-28 11.08.26.jpeg";
+  static const String veasna = "assets/images/members/photo_2024-11-28 11.30.47.jpeg";
+
 }
